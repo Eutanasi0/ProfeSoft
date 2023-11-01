@@ -1,0 +1,21 @@
+
+[{
+    "nombre" :"RODRIGUEZ RODRIGUEZ CIRO",
+    "curso" : "MATEMATICA DISCRETA",
+    "calificacion" : "10"
+},
+{
+    "nombre":"QUINTO PAZCE DANIEL",
+    "curso":"MATEMATICA DISCRETA",
+    "calificacion":"7"  
+},
+{
+    "nombre":"MOQUILLAZA HENRIQUEZ SANTIAGO DOMINGO",
+    "curso":"MATEMATICA DISCRETA",
+    "calificacion":"6"  
+},
+{
+    "nombre":"PILLHUAMAN NELLY ",
+    "curso":"PROBABILIDADES",
+    "calificacion":"0"  
+}]
