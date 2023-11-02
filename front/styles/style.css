@@ -12,7 +12,7 @@
     height: 100%;
     width: 100%;
     min-height: 100vh;
-    background: rgb(53, 45, 165);
+    background: black;
     position: relative;
     display: grid;
     grid-template-columns: repeat(2. 1fr);
@@ -52,7 +52,7 @@
 .inicio-text a{
     display: inline-block;
     color: white;
-    background: #332a41;
+    background: #413c48;
     border: 1px solid transparent;
     padding: 12px 30px;
     line-height: 1.4;
