@@ -20,12 +20,15 @@ body{
     align-items: center;
     z-index: 100;
 }
-.logoPS{
-    font-size: 32px;
-    color: white;
-    text-decoration: none;
-    font-weight: 700;
+.logoPS {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background: url('main.png') no-repeat;
+    background-size: contain; /* Use contain to fit the image within the element */
+    text-indent: -9999px;
 }
+
 
 .navbar a{
     position: relative;
