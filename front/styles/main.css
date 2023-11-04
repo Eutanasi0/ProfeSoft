@@ -6,7 +6,10 @@
 }
 body{
     min-height: 100vh;
+    display: flexbox;
     background: black;
+    align-items: center;
+    justify-content: center;
 }
 .header{
     position: fixed;
@@ -122,8 +125,27 @@ body{
 }
 
 /*navigate*/
-.logoprofesoft {
+.logoprofesoft{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.buscador{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: white;
+    border-radius: 30px;
+    max-width: 300px;
+    width: 100%;
+}
+
+.buscador input{
+    outline: none;
+    border: none;
+    font-weight: 500;
+    background: transparent;
+    width: 100%;
 }
