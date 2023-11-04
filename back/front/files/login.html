@@ -19,20 +19,20 @@
                     <h2>Login</h2>
                     <div class="inputbox">
                         <ion-icon name="mail-outline"></ion-icon>
-                        <input type="email" required>
-                        <label for="">Correo</label>
+                        <input id="user" type="email" required>
+                        <label for="us">Usuario</label>
                     </div>
                     <div class="inputbox">
                         <ion-icon name="lock-closed-outline"></ion-icon>
-                        <input type="password" required>
-                        <label for="">Contraseña</label>
+                        <input id="password">
+                        <label for="pas">Contraseña</label>
                     </div>
                     <div class="forget">
-                        <label for =""><input type="checkbox"> recuerdame <a href="#">Contraseña olvidada</a></label>
+                        <label><input type="checkbox"> recuerdame <a href="#">Contraseña olvidada</a></label>
                     </div>
                     <button id="loginbutton">Log in</button>
                     <div class="register">
-                        <p>No tienes una cuenta <a href="#">Register</a></p>
+                        <p>No tienes una cuenta <a href="/front/files/register.html">Register</a></p>
                     </div>
                 </form>
             </div>
@@ -44,6 +44,7 @@
     <!-- Add ScrollReveal library -->
     <script src="https://unpkg.com/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
     <script src="/front/scripts/index.js"></script>
+    <script src="/front/scripts/login.js"></script>
 
 </body>
 </html>

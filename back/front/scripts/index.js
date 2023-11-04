@@ -9,12 +9,3 @@ const sr = ScrollReveal({
 sr.reveal('.inicio-text',{delay:800, origin:'right'});
 sr.reveal('.inicio-img',{delay:450, origin:'left'});
 sr.reveal('.form-box',{delay:450, origin:'top'});
-
-// a mainPUNTOhtml CHI
-document.getElementById("loginbutton").addEventListener("click", function () {
-    window.location.href = "main.html";
-});
-
-
-
- 
