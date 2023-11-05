@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
 /*login*/
 .login{
     height: 100%;
@@ -73,12 +75,12 @@ top: -5px;
     font-size: .9em;
     color: #fff;
     display: flex;
-    justify-content: space-between;  
+    justify-content: space-between;
 }
 
 .forget label input{
     margin-right: 3px;
-    
+
 }
 .forget label a{
     color: #fff;
