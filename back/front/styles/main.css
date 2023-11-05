@@ -129,8 +129,13 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    grid-area: logoprofesoft;
 }
-
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .buscador{
     display:flex;
     justify-content: center;
@@ -148,4 +153,45 @@ body{
     font-weight: 500;
     background: transparent;
     width: 100%;
+}
+.presenta{
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    background: black;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2. 1fr);
+    grid-template-areas: "logoprofesoft presenta-text";
+    align-items: center;
+    gap: 2rem;
+}
+.presenta-text{
+    padding: 0 19%;
+    grid-area: presenta-text;
+}
+.presenta-text h5{
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+    margin-bottom: 40px;
+}
+.presenta-text h1{
+    font-family: 'Onest', sans-serif;
+    font-size: 100px;
+    line-height: 1;
+    color: white;
+    margin: 0 0 45px;
+}
+.presenta-text h4{
+    font-size: 18px;
+    font-weight: 650;
+    color: white;
+    margin-bottom: 10px;
+
+}
+.presenta-text p{
+    color:white;
+    font-size: 1.9;
+    margin-bottom: 20px;
 }
