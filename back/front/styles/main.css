@@ -6,7 +6,10 @@
 }
 body{
     min-height: 100vh;
+    display: flexbox;
     background: black;
+    align-items: center;
+    justify-content: center;
 }
 .header{
     position: fixed;
@@ -50,3 +53,99 @@ body{
 }
 
 
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+/*inicio*/
+.inicio{
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    background: black;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2. 1fr);
+    grid-template-areas: "inicio-text inicio-img";
+    align-items: center;
+    gap: 2rem;
+}
+.inicio-text{
+    padding: 0 19%;
+    grid-area: inicio-text;
+}
+.inicio-text h5{
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+    margin-bottom: 40px;
+}
+.inicio-text h1{
+    font-family: 'Onest', sans-serif;
+    font-size: 100px;
+    line-height: 1;
+    color: white;
+    margin: 0 0 45px;
+}
+.inicio-text h4{
+    font-size: 18px;
+    font-weight: 650;
+    color: white;
+    margin-bottom: 10px;
+
+}
+.inicio-text p{
+    color:white;
+    font-size: 1.9;
+    margin-bottom: 20px;
+}
+.inicio-text a{
+    display: inline-block;
+    color: white;
+    background: #201f21;
+    border: 1px solid transparent;
+    padding: 12px 30px;
+    line-height: 1.4;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 30px;
+}
+.inicio-img img{
+    width: 500px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: inicio-img;
+}
+
+/*navigate*/
+.logoprofesoft{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buscador{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: white;
+    border-radius: 30px;
+    max-width: 300px;
+    width: 100%;
+}
+
+.buscador input{
+    outline: none;
+    border: none;
+    font-weight: 500;
+    background: transparent;
+    width: 100%;
+}

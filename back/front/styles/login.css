@@ -5,7 +5,7 @@
     height: 100%;
     width: 100%;
     min-height: 100vh;
-    background: rgb(53, 45, 165);
+    background: black;
     position: relative;
     display: flex;
     grid-template-columns: repeat(2. 1fr);
