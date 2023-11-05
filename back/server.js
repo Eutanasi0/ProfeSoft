@@ -7,7 +7,7 @@ const app = express();
 // app.use(express.static('front/styles'))
 // app.use(express.static('front/img'))
 // app.use(express.static('front/scripts'))
-app.use('/front',express.static('./front'));
+app.use(express.static('front'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 const PORT = process.env.PORT || 3000;

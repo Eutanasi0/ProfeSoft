@@ -4,7 +4,7 @@ let login_button = document.getElementById('loginbutton')
 
 login_button.addEventListener('click', function(){
     console.log(usuario.value, contra.value);
-    fetch('http://localhost:3000/front/files/login.html/login', {
+    fetch('http://localhost:3000/files/login.html', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
