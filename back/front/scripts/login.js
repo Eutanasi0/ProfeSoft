@@ -4,7 +4,7 @@ let login_button = document.getElementById('loginbutton')
 
 login_button.addEventListener('click', function(){
     console.log(usuario.value, contra.value);
-    fetch('http://localhost:3000/files/login.html', {
+    fetch('/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -14,7 +14,14 @@ login_button.addEventListener('click', function(){
             password: password.value,
         })
     })
-    .then(respone => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.log(error));
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data)
+    })
+    .catch(error => console.error(error));
 })

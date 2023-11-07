@@ -27,11 +27,6 @@ app.use((req, res, next) => {
     }
   });
 
-app.use(function(req, res) {
-    res.status(400);
-    return res.send('404 Error: Resource not found');
-  });
-
 // Rutas
 app.use(require("./rutas/login"));
 
