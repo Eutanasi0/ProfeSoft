@@ -26,6 +26,8 @@ body{
 .logoPS{
     font-size: 32px;
     color: white;
+    font-family: 'Pacifico', cursive;
+    font-family: 'Roboto', sans-serif;
     text-decoration: none;
     font-weight: 700;
 }
@@ -86,7 +88,8 @@ body{
     margin-bottom: 40px;
 }
 .inicio-text h1{
-    font-family: 'Onest', sans-serif;
+    font-family: 'Pacifico', cursive;
+    font-family: 'Roboto', sans-serif;
     font-size: 100px;
     line-height: 1;
     color: white;
