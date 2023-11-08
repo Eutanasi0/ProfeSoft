@@ -11,7 +11,7 @@ const verifyLogin = async(req, res) => {
         database: 'professoft',
         password: process.env.PASSWORD,
         port: 5432,
-    });
+      });
     try {
         await client.connect();
         const user = await getUserFromDatabase(username, password, client);
