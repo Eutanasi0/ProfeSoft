@@ -128,12 +128,6 @@ body{
 }
 
 /*navigate*/
-.logoprofesoft{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    grid-area: logoprofesoft;
-}
 .container{
     display: flex;
     justify-content: center;
@@ -164,20 +158,24 @@ body{
     background: black;
     position: relative;
     display: grid;
-    grid-template-columns: repeat(2. 1fr);
-    grid-template-areas: "logoprofesoft presenta-text";
     align-items: center;
     gap: 2rem;
 }
 .presenta-text{
     padding: 0 19%;
-    grid-area: presenta-text;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 .presenta-text h5{
     font-size: 14px;
     font-weight: 400;
     color: white;
     margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .presenta-text h1{
     font-family: 'Onest', sans-serif;
@@ -185,16 +183,25 @@ body{
     line-height: 1;
     color: white;
     margin: 0 0 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 .presenta-text h4{
     font-size: 18px;
     font-weight: 650;
     color: white;
     margin-bottom: 10px;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .presenta-text p{
     color:white;
     font-size: 1.9;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
