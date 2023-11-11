@@ -3,10 +3,10 @@ const router = Router();
 
 //Controladores
 const { verifyLogin } = require("../controladores/logincontroller");
-const { createEmail, confirmEmail } = require("../controladores/email");
+const { createAccount, confirmEmail, verifyEmail } = require("../controladores/email");
 //Login
 router.post("/login", verifyLogin);
-// router.post("/register", createEmail);
-router.post("/register", confirmEmail);
+router.post("/register",createAccount ,confirmEmail);
+router.get("/verify", verifyEmail);
 
 module.exports = router
