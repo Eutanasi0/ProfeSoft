@@ -36,31 +36,6 @@
             <ul id="resultados" class="resultadosdeDT"></ul>
         </div>
     </section>
-    <script>
-        const profesores = {
-          "ciro": { "nombre": "Ciro", "curso": "Matemática Discreta" },
-          "quinto": { "nombre": "Quinto", "curso": "Matemática Discreta" },
-          "moquillaza": { "nombre": "Moquillaza", "curso": "Matemática Discreta" },
-          "nelly": { "nombre": "Nelly", "curso": "Probabilidades" },
-          "miranda": { "nombre": "Miranda", "curso": "Probabilidades" },
-          "rosario": {"nombre": "Rosario", "curso": "Probabilidades"},
-        };
-    
-        async function buscarProfe() {
-          const input = document.getElementById('busqueda');
-          const resultados = document.getElementById('resultados');
-          const consulta = input.value.toLowerCase();
-          resultados.innerHTML = '';
-    
-          for (let nombre in profesores) {
-            if (nombre.includes(consulta)) {
-              const resultadoItem = document.createElement('li');
-              resultadoItem.textContent = `${profesores[nombre].nombre} - Curso: ${profesores[nombre].curso}`;
-              resultados.appendChild(resultadoItem);
-            }
-          }
-        }
-    </script>
-
+    <script src="../scripts/dicTree.js"></script>
 </body>
 </html>
