@@ -2,61 +2,66 @@ const nodemailer = require("nodemailer");
 const mailgen = require("mailgen");
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { Client } = require("pg");
+const { Pool } = require("pg");
 require('dotenv').config();
+
+const pool = new Pool({
+    user: 'postgres',
+    host: process.env.HOST,
+    database: 'professoft', // weben
+    password: process.env.PASSWORD,
+    port: 5432,
+})
 
 const createAccount = async(req, res, next) =>{
     const {usuario, email, password} = req.body;
-    const client = new Client({
-        user: 'postgres',
-        host: process.env.HOST,
-        database: 'professoft', // weben
-        password: process.env.PASSWORD,
-        port: 5432,
-    });
-
     let pass = password;
     let hashed_pass = '';
     let salt = '';
 
-    (async () => {
-        try {
-            await client.connect();
-            salt = await bcrypt.genSalt(10);
-            hashed_pass = await bcrypt.hash(pass, salt);
-            const query_find_users_by_name = {
-                text: 'SELECT * FROM public."users" WHERE name = $1',
-                values: [usuario],
-            };
-            const flag = await client.query(query_find_users_by_name);
-            if(flag.rowCount > 0){
-                console.log(flag);
-                res.status(400).json({message: "Ese nombre de usuario ya existe, escoge otro"});
-            } else{
-                const query_user = {
-                    text: 'INSERT INTO public."users"(name, email, hashed_pass, salt) VALUES($1, $2, $3, $4)',
-                    values: [usuario, email, hashed_pass, salt],
-                }
-                await client.query(query_user);
-                next();
+    if(confirmDomain(email)){
+        await usingTheDB(pass, hashed_pass, salt, usuario, email, password);
+        next();
+    } else {
+        res.status(200).json({message: "Ese no es un correo institucional..."})
+    }
+}
+
+async function usingTheDB(pass, hashed_pass, salt, usuario, email, password){
+    const client = await pool.connect();
+    try {
+        salt = await bcrypt.genSalt(10);
+        hashed_pass = await bcrypt.hash(pass, salt);
+        const query_find_users_by_name = {
+            text: 'SELECT * FROM public."users" WHERE email = $1 OR name = $2',
+            values: [email, usuario],
+        };
+        const flag = await client.query(query_find_users_by_name);
+        if(flag.rowCount > 0){
+            console.log("El nombre de usuario o el correo ya está registrado");
+            res.status(400).json({message: "El nombre de usuario o el email ya están registrados"});
+        } else{
+            const query_user = {
+                text: 'INSERT INTO public."users"(name, email, hashed_pass, salt) VALUES($1, $2, $3, $4)',
+                values: [usuario, email, hashed_pass, salt],
             }
-        } catch (error) {
-            console.error('Error:', error);
-        } finally {
-            await client.end();
+            await client.query(query_user);
         }
-    })();
+    } catch (error) {
+        console.error('Error:', error);
+    } finally {
+        client.release();
+    }
+};
+
+function confirmDomain(email){
+    const myDomain = "@unmsm.edu.pe";
+    return email.endsWith(myDomain);
 }
 
 const confirmEmail = async(req, res)=>{
     const {usuario, email, password} = req.body;
-    const client = new Client({
-        user: 'postgres',
-        host: process.env.HOST,
-        database: 'professoft', // weben
-        password: process.env.PASSWORD,
-        port: 5432,
-    });
+    const client = await pool.connect()
     let date = new Date();
     let mail1 = {
                 "id": usuario.id,
@@ -65,7 +70,6 @@ const confirmEmail = async(req, res)=>{
     const token_mail_verification = jwt.sign(mail1, process.env.jwt_secret_mail, { expiresIn: '1d' });
 
     try {
-        await client.connect();
         const query_find_users_by_name = {
             text: 'UPDATE public."users" SET token_auth = $1 WHERE name = $2',
             values: [token_mail_verification, usuario],
@@ -74,7 +78,7 @@ const confirmEmail = async(req, res)=>{
     } catch (error) {
         console.log(error);
     } finally{
-        await client.end();
+        client.release();
     }
 
     let url = process.env.baseUrl + "verify?id=" + token_mail_verification + "&username=" + usuario;
@@ -134,15 +138,8 @@ const confirmEmail = async(req, res)=>{
 const verifyEmail = async(req, res)=>{
     token = req.query.id;
     user = req.query.username;
-    const client = new Client({
-        user: 'postgres',
-        host: process.env.HOST,
-        database: 'professoft', // weben
-        password: process.env.PASSWORD,
-        port: 5432,
-    });
+    const client = await pool.connect();
     try {
-        await client.connect();
         const query_find_token_by_name ={
             text: 'SELECT token_auth FROM public."users" WHERE name = $1',
             values: [user],
@@ -180,7 +177,7 @@ const verifyEmail = async(req, res)=>{
         console.log(error);
         res.status(403).json({message: "That token doesn't exist"})
     } finally {
-        await client.end();
+        client.release();
     }
 
 }

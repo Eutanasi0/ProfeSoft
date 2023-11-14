@@ -3,6 +3,7 @@ let contra = document.getElementById('password');
 let login_button = document.getElementById('loginbutton')
 
 login_button.addEventListener('click', function(){
+    event.preventDefault();
     console.log(usuario.value, contra.value);
     fetch('/login', {
         method: 'POST',
@@ -11,7 +12,7 @@ login_button.addEventListener('click', function(){
         },
         body: JSON.stringify({
             user: usuario.value,
-            password: password.value,
+            password: contra.value,
         })
     })
     .then(response => {
@@ -21,6 +22,7 @@ login_button.addEventListener('click', function(){
         return response.json();
     })
     .then(data => {
+        console.log(data)
         if(data.username === usuario.value){
             location.href ='http://localhost:3000/files/navigate.html';
         }
