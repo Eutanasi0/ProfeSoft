@@ -8,7 +8,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@100&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+          background-color: black;
+          color: white;
+        }
+    </style>
 </head>
+
 <body>
     <header class="header">
         <a href="#" class="logoPS">Ps</a>
@@ -24,13 +32,35 @@
             <h5>UNMSM</h5>
             <h4>Facultad de Ingeniería de Sistemas e Informática</h4>
             <p>Califica a tus profesores de la FISI</p>
-            <div class="buscador">
-                <input type="text" placeholder="Buscar">
-            </div>
+            <input type="text" placeholder="Buscar" id="busqueda" oninput="buscarProfe()"> 
+            <ul id="resultados" class="resultadosdeDT"></ul>
         </div>
     </section>
+    <script>
+        const profesores = {
+          "ciro": { "nombre": "Ciro", "curso": "Matemática Discreta" },
+          "quinto": { "nombre": "Quinto", "curso": "Matemática Discreta" },
+          "moquillaza": { "nombre": "Moquillaza", "curso": "Matemática Discreta" },
+          "nelly": { "nombre": "Nelly", "curso": "Probabilidades" },
+          "miranda": { "nombre": "Miranda", "curso": "Probabilidades" },
+          "rosario": {"nombre": "Rosario", "curso": "Probabilidades"},
+        };
     
-    <script src="https://unpkg.com/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
-    <script src="../scripts/index.js"></script>
+        async function buscarProfe() {
+          const input = document.getElementById('busqueda');
+          const resultados = document.getElementById('resultados');
+          const consulta = input.value.toLowerCase();
+          resultados.innerHTML = '';
+    
+          for (let nombre in profesores) {
+            if (nombre.includes(consulta)) {
+              const resultadoItem = document.createElement('li');
+              resultadoItem.textContent = `${profesores[nombre].nombre} - Curso: ${profesores[nombre].curso}`;
+              resultados.appendChild(resultadoItem);
+            }
+          }
+        }
+    </script>
+
 </body>
 </html>
