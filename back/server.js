@@ -29,6 +29,7 @@ app.use((req, res, next) => {
 
 // Rutas
 app.use(require("./rutas/login"));
+app.use(require("./rutas/teachers"));
 
 app.listen(PORT, () =>{
     console.log(`La aplicación está corriendo en el puerto ${PORT}`);
