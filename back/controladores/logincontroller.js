@@ -1,37 +1,41 @@
 require('dotenv').config();
 const bcrypt = require('bcryptjs');
-const { Client } = require("pg");
+const { Pool } = require("pg");
+
+const pool = new Pool({
+    user: 'postgres',
+    host: process.env.HOST,
+    database: 'professoft',
+    password: process.env.PASSWORD,
+    port: 5432,
+})
 
 const verifyLogin = async(req, res) => {
     const {user, password} = req.body;
-    const username = user;
-    const client = new Client({
-        user: 'postgres',
-        host: process.env.HOST,
-        database: 'professoft',
-        password: process.env.PASSWORD,
-        port: 5432,
-      });
-    try {
-        await client.connect();
-        const user = await getUserFromDatabase(username, password, client);
-        // req.session.isAuth = true;
-        if (user) {
-        res.status(200).json({
-            username,
-            // sessionId: req.session.id,
-        });
-        } else {
-        res.status(200).json({ message: "Credenciales incorrectas" });
+    const username = user; // El username aquí es el email, no lo cambié
+    if(confirmDomain(username)){
+        try {
+            const client = await pool.connect();
+            const user = await getUserFromDatabase(username, password, client);
+            // req.session.isAuth = true;
+            if (user) {
+            res.status(200).json({
+                username,
+                // sessionId: req.session.id,
+            });
+            } else {
+            res.status(200).json({ message: "Credenciales incorrectas" });
+            }
+        } catch (error) {
+            console.error('Error al manejar la solicitud:', error);
+            res.status(500).json({ message: "Error en el servidor" });
+        } finally {
+            if (client._connected) {
+                client.release();
+            }
         }
-    } catch (error) {
-        console.error('Error al manejar la solicitud:', error);
-        res.status(500).json({ message: "Error en el servidor" });
-    } finally {
-        if (client._connected) {
-            await client.end();
-            console.log('Cliente desconectado');
-        }
+    } else {
+        res.status(200).json({message: "No es un correo"});
     }
 }
 
@@ -40,7 +44,7 @@ async function getUserFromDatabase(username, password, client) {
   try {
     // Realizar una consulta SQL para verificar las credenciales
     const query_sal = {
-      text: 'SELECT salt FROM public."users" WHERE name = $1',
+      text: 'SELECT salt FROM public."users" WHERE email = $1',
       values: [username],
     }
     let sal = await client.query(query_sal);
@@ -48,7 +52,7 @@ async function getUserFromDatabase(username, password, client) {
 
 
     const query = {
-      text: 'SELECT user FROM public."users" WHERE name = $1 AND hashed_pass = $2',
+      text: 'SELECT user FROM public."users" WHERE email = $1 AND hashed_pass = $2',
       values: [username, hashed],
     }
 
