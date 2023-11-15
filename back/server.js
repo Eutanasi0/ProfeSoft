@@ -1,12 +1,11 @@
 // Importaciones
 const express = require('express');
-const path = require('path');
+const session = require('express-session');
+const pgSession = require('connect-pg-simple')(session);
+const pg = require('pg');
 const app = express();
+require('dotenv').config();
 
-// Brinda el html
-// app.use(express.static('front/styles'))
-// app.use(express.static('front/img'))
-// app.use(express.static('front/scripts'))
 app.use(express.static('front'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -26,6 +25,31 @@ app.use((req, res, next) => {
         next(error);
     }
   });
+
+// Cookies
+const pgPool = new pg.Pool({
+    user: 'postgres',
+    host: process.env.HOST,
+    database: 'professoft',
+    password: process.env.PASSWORD,
+    port: 5432,
+  });
+
+  pgStoreConfig = {
+    pgPool: pgPool,
+  };
+
+  app.use(session({
+      store: new pgSession({
+        pool : pgPool,
+        tableName : 'user_sessions'
+      }),
+      secret: process.env.jwt_secret_mail,
+      resave: false,
+      cookie: { maxAge: 10*60*1000 },
+      saveUninitialized: false,
+      secure: true,
+}));
 
 // Rutas
 app.use(require("./rutas/login"));
