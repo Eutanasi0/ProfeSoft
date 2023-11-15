@@ -55,6 +55,24 @@ async function getTeachersFromDB(teacherId){
     }
 }
 
+const getAllTeachers = async(req, res) => {
+    const client = await pool.connect();
+    try{
+        const query_all_teachers = {
+            text: 'SELECT * FROM public."teachers"',
+        };
+        const result = await client.query(query_all_teachers);
+        const dataSend = result.rows;
+        res.status(200).json({dataSend});
+    } catch (error){
+        console.error(error);
+        res.status(500).json({message: "Problemas con la db"})
+    } finally {
+        client.release();
+    }
+}
+
 module.exports = {
     getTeacher,
+    getAllTeachers,
 }
