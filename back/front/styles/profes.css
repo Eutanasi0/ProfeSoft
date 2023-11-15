@@ -1,17 +1,19 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "poppins", sans-serif;
 }
-body{
+
+body {
     min-height: 100vh;
-    display: flexbox;
+    display: flex;
     background: black;
     align-items: center;
     justify-content: center;
 }
-.header{
+
+.header {
     position: fixed;
     top: 0;
     left: 0;
@@ -23,7 +25,8 @@ body{
     align-items: center;
     z-index: 100;
 }
-.logoPS{
+
+.logoPS {
     font-size: 32px;
     color: white;
     font-family: 'Pacifico', cursive;
@@ -32,7 +35,7 @@ body{
     font-weight: 700;
 }
 
-.navbar a{
+.navbar a {
     position: relative;
     color: white;
     text-decoration: none;
@@ -40,6 +43,7 @@ body{
     font-weight: 500;
     margin-left: 40px;
 }
+
 .navbar a::before {
     content: '';
     position: absolute;
@@ -50,6 +54,43 @@ body{
     background: white;
     transition: .3s;
 }
-.navbar a:hover::before{
+
+.navbar a:hover::before {
     width: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    /* Fondo blanco */
+    color: white;
+    /* Texto negro */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#perfil {
+    width: 80%;
+    max-width: 600px;
+    background-color: transparent;
+    /* Transparente */
+    padding: 20px;
+    border-radius: 20px;
+    /* Aumenté el radio de borde para hacerlo más curveado */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid white;
+    /* Borde blanco */
+    display: flex;
+    align-items: center;
+}
+
+#perfil img {
+    width: 100px; /* Adjust the width as needed */
+    height: auto;
+    border-radius: 50%; /* Make it round */
+    margin-left: 130px; /* Increase the margin to move it more to the right */
 }
