@@ -1,14 +1,3 @@
-//scroll reveal
-const sr = ScrollReveal({
-  distance:'65px',
-  duration:2600,
-  delay:450,
-  reset:false,
-});
-
-sr.reveal('.presenta-text',{delay:800, origin:'top'});
-
-
 const profesores = {
   "ciro rodriguez rodriguez":{ "nombre":"Ciro Rodríguez Rodríguez", "curso": "Matemática Discreta" },
   "daniel quinto pacze":{ "nombre": "Daniel Quinto Pacze", "curso": "Matemática Discreta" },
