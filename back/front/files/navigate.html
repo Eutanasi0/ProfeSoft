@@ -28,14 +28,18 @@
     </header>
 
     <section class="presenta" id="inicio">
-        <div class="presenta-text">
+        <div class="presenta-text" style="display: flex; align-items: center;">
             <h5>UNMSM</h5>
             <h4>Facultad de Ingeniería de Sistemas e Informática</h4>
             <p>Califica a tus profesores de la FISI</p>
-            <input type="text" placeholder="Buscar" id="busqueda" oninput="buscarProfe()" style="margin-bottom: 10px;"> 
+            <div style="display: flex; align-items: center;">
+                <input type="text" placeholder="Buscar" id="busqueda" oninput="buscarProfe()" style="margin-bottom: 0px; margin-right: 5px;">
+                <button onclick="">Buscar</button>
+            </div>
             <ul id="resultados" class="resultadosdeDT" style="margin-top: 10px;"></ul>
         </div>
     </section>
+    
     <script src="../scripts/dicTree.js"></script>
 </body>
 </html>
