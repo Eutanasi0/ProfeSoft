@@ -30,7 +30,6 @@ body {
     font-size: 32px;
     color: white;
     font-family: 'Pacifico', cursive;
-    font-family: 'Roboto', sans-serif;
     text-decoration: none;
     font-weight: 700;
 }
@@ -64,9 +63,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: black;
-    /* Fondo blanco */
     color: white;
-    /* Texto negro */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -74,23 +71,31 @@ body {
 }
 
 #perfil {
-    width: 80%;
+    width: 100%;
     max-width: 600px;
     background-color: transparent;
-    /* Transparente */
     padding: 20px;
     border-radius: 20px;
-    /* Aumenté el radio de borde para hacerlo más curveado */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border: 2px solid white;
-    /* Borde blanco */
     display: flex;
     align-items: center;
 }
 
 #perfil img {
-    width: 100px; /* Adjust the width as needed */
+    width: 100px; 
     height: auto;
-    border-radius: 50%; /* Make it round */
-    margin-left: 130px; /* Increase the margin to move it more to the right */
+    border-radius: 50%; 
+    margin-left: 100px; 
 }
+
+#comentarios {
+    width: 100%;
+    max-width: 600px;
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid white;
+}
+
