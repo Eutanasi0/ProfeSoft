@@ -49,7 +49,7 @@ async function getTeachersFromDB(teacherId){
         }
     } catch (error) {
         console.log(error);
-        return null;
+        return "hola tqm";
     } finally {
         client.release();
     }
@@ -59,7 +59,19 @@ const getAllTeachers = async(req, res) => {
     const client = await pool.connect();
     try{
         const query_all_teachers = {
-            text: 'SELECT * FROM public."teachers"',
+            text: `
+                SELECT
+                    teachers.id AS teacher_id,
+                    teachers.name AS teacher_name,
+                    courses.id AS course_id,
+                    courses.name AS course_name
+                FROM
+                    public."teachers"
+                JOIN
+                    public."teachers_courses" ON teachers.id = teachers_courses.profesor_id
+                JOIN
+                    public."courses" ON teachers_courses.cursos_id = courses.id
+            `,
         };
         const result = await client.query(query_all_teachers);
         const dataSend = result.rows;
