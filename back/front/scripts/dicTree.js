@@ -7,15 +7,15 @@ const profesores = {
     "rosario del pilar depaz apestegui": { "id":"13","nombre": "Rosario del Pilar Depaz Apestegui", "curso": "Probabilidades"},
     "jorge luis chávez soto": {"id":"8", "nombre": "Jorge Luis Chávez Soto", "curso": "Algorítmica II"},
     "juan ricardo tapia carbajal": {"id":"7", "nombre": "Juan Ricardo Tapia Carbajal", "curso": "Algorítmica II"},
-    "augusto parcemon corte vásquez": {"nombre": "Augusto Parcemon Corte Vásquez", "curso": "Algorítmica II"},
-    "fausto franklin mercado philco": {"nombre": "Fausto Franklin Mercado Philco", "curso": "Contabilidad para la Gestión"},
-    "frank edmundo escobedo bailón": {"nombre": "Frank Edmundo Escobedo Bailón", "curso": "Innovación, Tecnología y Emprendimiento"},
-    "luz sussy bayona oré": {"nombre": "Luz Sussy Bayona Oré", "curso": "Innovación, Tecnología y Emprendimiento"},
-    "igor jovino aguilar alonso": {"nombre": "Igor Jovino Aguilar Alonso", "curso": "Innovación, Tecnología y Emprendimiento"},
-    "gustavo arredondo castillo": {"nombre": "Gustavo Arredondo Castillo", "curso": "Procesos de Software"},
-    "yudi lucero guzmán monteza": {"nombre": "Yudi Lucero Guzmán Monteza", "curso": "Procesos de Software"},
-    "felix armando fermin perez": {"nombre": "Felix Armando Fermin Perez", "curso": "Sistemas Digitales"},
-    "walter pedro contreras flores": {"nombre": "Walter Pedro Contreras Flores", "curso": "Sistemas Digitales"}
+    "augusto parcemon corte vásquez": { "id":"6","nombre": "Augusto Parcemon Corte Vásquez", "curso": "Algorítmica II"},
+    "fausto franklin mercado philco": {"id":"5", "nombre": "Fausto Franklin Mercado Philco", "curso": "Contabilidad para la Gestión"},
+    "frank edmundo escobedo bailón": { "id":"4","nombre": "Frank Edmundo Escobedo Bailón", "curso": "Innovación, Tecnología y Emprendimiento"},
+    "luz sussy bayona oré": {"id":"3", "nombre": "Luz Sussy Bayona Oré", "curso": "Innovación, Tecnología y Emprendimiento"},
+    "igor jovino aguilar alonso": {"id":"2","nombre": "Igor Jovino Aguilar Alonso", "curso": "Innovación, Tecnología y Emprendimiento"},
+    "gustavo arredondo castillo": {"id":"14","nombre": "Gustavo Arredondo Castillo", "curso": "Procesos de Software"},
+    "yudi lucero guzmán monteza": {"id":"15","nombre": "Yudi Lucero Guzmán Monteza", "curso": "Procesos de Software"},
+    "felix armando fermin perez": {"id":"16","nombre": "Felix Armando Fermin Perez", "curso": "Sistemas Digitales"},
+    "walter pedro contreras flores": {"id":"17","nombre": "Walter Pedro Contreras Flores", "curso": "Sistemas Digitales"}
 };
 
 let profesoresDB;
