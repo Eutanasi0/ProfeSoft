@@ -39,8 +39,8 @@ const pgPool = new pg.Pool({
     pgPool: pgPool,
   };
 
-  app.use(session({
-      store: new pgSession({
+    app.use(session({
+        store: new pgSession({
         pool : pgPool,
         tableName : 'user_sessions'
       }),
@@ -49,7 +49,8 @@ const pgPool = new pg.Pool({
       cookie: { maxAge: 10*60*1000 },
       saveUninitialized: false,
       secure: true,
-}));
+  }));
+
 
 // Rutas
 app.use(require("./rutas/login"));

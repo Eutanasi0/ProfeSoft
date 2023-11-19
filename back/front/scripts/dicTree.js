@@ -35,8 +35,16 @@ async function buscarProfe() {
             let tempo_name = profesor.teacher_name.toLowerCase();
             let tempo_course = profesor.course_name.toLowerCase();
             if (tempo_name.includes(consulta) || tempo_course.includes(consulta)) {
+                // Crear un enlace y agregarlo al resultadoItem
+                const enlace = document.createElement('a');
+                enlace.href = 'profes.html'; // Coloca la URL a la que deseas que apunte el enlace
+                enlace.textContent = `${profesor.teacher_name} - Curso: ${profesor.course_name}`;
+
+                // Crear un elemento de lista y agregar el enlace a él
                 const resultadoItem = document.createElement('li');
-                resultadoItem.textContent = `${profesor.teacher_name} - Curso: ${profesor.course_name}`;
+                resultadoItem.appendChild(enlace);
+
+                // Agregar el elemento de lista a la lista de resultados
                 resultados.appendChild(resultadoItem);
             }
         }
@@ -50,5 +58,5 @@ async function buscarProfe() {
 const button = document.getElementById('buscar');
 
 button.addEventListener('click', function(){
-
+    
 });
