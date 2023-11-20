@@ -88,6 +88,15 @@ body {
     border-radius: 50%; 
     margin-left: 130px; 
 }
+#AgregarComentarios {
+    width: 100%;
+    max-width: 600px;
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid white;
+}
 
 #comentarios {
     width: 100%;
@@ -99,3 +108,6 @@ body {
     border: 2px solid white;
 }
 
+.comentario {
+    margin-top: 20px;
+}

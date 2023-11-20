@@ -30,8 +30,8 @@ fetch(`/teacher?id=${teacherId}`, {
         perfilContainer.innerHTML = `
             <div>
                 <h2>${data.teachers['teacher']['name']}</h2>
-                <p>${data.teachers['course']['name']}</p>
-                <p>Calificación:${data.teachers['teacher']['grade']}</p>
+                <p style="margin-top: 10px;">${data.teachers['course']['name']}</p>
+                <p style="margin-top: 15px;">Calificación : ${data.teachers['teacher']['grade']}</p>
             </div>
             <img src="${imageData}" alt="Profile Image">
         `;
