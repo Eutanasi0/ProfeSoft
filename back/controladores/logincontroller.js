@@ -14,21 +14,22 @@ const verifyLogin = async(req, res) => {
     const {user, password} = req.body;
     const username = user; // El username aquí es el email, no lo cambié
     try {
-        let user;
+        let response;
         let activate = await verifyactivation(username)
         let message = "";
         if(activate.rows[0].activate){
-            user = await getUserFromDatabase(username, password);
+            response = await getUserFromDatabase(username, password);
         } else{
-            user = null;
+            response = null;
             message += " o confirma tu correo antes de logearte";
         }
 
-        if (user) {
+        if (response) {
             req.session.isAuth = true,
             res.status(200).json({
                 username,
                 sessionId: req.session.id,
+                response
             });
         } else {
             res.status(200).json({ msg: "Credenciales incorrectas" + message});
@@ -53,16 +54,16 @@ async function getUserFromDatabase(username, password) {
 
 
         const query = {
-            text: 'SELECT user FROM public."users" WHERE email = $1 AND hashed_pass = $2',
+            text: 'SELECT name FROM public."users" WHERE email = $1 AND hashed_pass = $2',
             values: [username, hashed],
         }
 
         const result = await client.query(query);
 
         if (result.rows.length === 1) {
-            const user = result.rows[0];
+            const userInfo = result.rows[0];
             return {
-                id: user,
+                id: userInfo,
             };
         } else {
             return null;

@@ -1,3 +1,6 @@
+const urlParams = new URLSearchParams(window.location.search);
+const username = urlParams.get('user');
+
 let profesoresDB;
 
 async function fetchData() {
@@ -37,7 +40,7 @@ async function buscarProfe() {
             if (tempo_name.includes(consulta) || tempo_course.includes(consulta)) {
                 // Crear un enlace y agregarlo al resultadoItem
                 const enlace = document.createElement('a');
-                enlace.href = `profes.html?id=${profesor.teacher_id}`; // Coloca la URL a la que deseas que apunte el enlace
+                enlace.href = `profes.html?user=${username}&id=${profesor.teacher_id}`; // Coloca la URL a la que deseas que apunte el enlace
                 enlace.textContent = `${profesor.teacher_name} - Curso: ${profesor.course_name}`;
 
                 // Crear un elemento de lista y agregar el enlace a él

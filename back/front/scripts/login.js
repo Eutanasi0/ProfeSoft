@@ -22,9 +22,8 @@ login_button.addEventListener('click', function(){
         return response.json();
     })
     .then(data => {
-        console.log(data)
         if(data.username === usuario.value){
-            location.href ='http://localhost:3000/files/navigate.html';
+            location.href =`http://localhost:3000/files/navigate.html?user=${data['response']['id'].name}`;
         }
     })
     .catch(error => console.error(error));
