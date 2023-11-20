@@ -1,7 +1,7 @@
-// Este file es para agregar cuentas en la base de datos
 const { Client } = require("pg");
-require('dotenv').config();
+const fs = require('fs');
 const bcrypt = require('bcryptjs');
+require('dotenv').config();
 
 const client = new Client({
     user: 'postgres',
@@ -11,26 +11,20 @@ const client = new Client({
     port: 5432,
 });
 
-// Pon la contraseña en pass
-let pass = '123';
-let hashed_pass = '';
-let salt = '';
-let email = 'benja@hotmail.com';
+const imageBuffer = fs.readFileSync('./front/img/yudi.jpeg');
 
 (async () => {
     try {
         await client.connect();
-        salt = await bcrypt.genSalt(10);
-        hashed_pass = await bcrypt.hash(pass, salt);
         const query_user = {
-            text: 'INSERT INTO public."users"(name, email, hashed_pass, salt) VALUES($1, $2, $3, $4)',
-            values: ['admin', email, hashed_pass, salt],
+            text: 'UPDATE public."teachers" SET img = $1 WHERE id = $2;',
+            values: [imageBuffer, 15],
         }
         await client.query(query_user);
+        console.log('Todo bien')
     } catch (error) {
         console.error('Error:', error);
     } finally {
         await client.end();
     }
 })();
-

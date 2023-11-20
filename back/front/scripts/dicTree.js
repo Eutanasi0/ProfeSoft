@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 class TrieNode {
     constructor() {
         this.children = {};
@@ -35,6 +36,10 @@ class Trie {
         return node.isEndOfWord ? node.profesorData : null;
     }
 }
+=======
+const urlParams = new URLSearchParams(window.location.search);
+const username = urlParams.get('user');
+>>>>>>> 3f234888ea96d8134f6e350d9107ea3327730f1a
 
 let profesoresDB;
 let trie;
@@ -79,6 +84,17 @@ async function buscarProfe() {
         if (!profesoresDB) {
             await fetchData(); // Fetch data if not already fetched
         }
+<<<<<<< HEAD
+=======
+        for (let profesor of profesoresDB.dataSend) {
+            let tempo_name = profesor.teacher_name.toLowerCase();
+            let tempo_course = profesor.course_name.toLowerCase();
+            if (tempo_name.includes(consulta) || tempo_course.includes(consulta)) {
+                // Crear un enlace y agregarlo al resultadoItem
+                const enlace = document.createElement('a');
+                enlace.href = `profes.html?user=${username}&id=${profesor.teacher_id}`; // Coloca la URL a la que deseas que apunte el enlace
+                enlace.textContent = `${profesor.teacher_name} - Curso: ${profesor.course_name}`;
+>>>>>>> 3f234888ea96d8134f6e350d9107ea3327730f1a
 
         // Search using trie
         let result = trie.search(consulta);
@@ -106,5 +122,5 @@ async function buscarProfe() {
 const button = document.getElementById('buscar');
 
 button.addEventListener('click', function(){
-    
+
 });
