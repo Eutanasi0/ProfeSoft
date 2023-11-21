@@ -1,5 +1,6 @@
 require('dotenv').config();
 const { Pool } = require("pg");
+const { calculateCalification } = require('./commentscontroller');
 
 const pool = new Pool({
     user: 'postgres',
@@ -47,6 +48,7 @@ async function getTeachersFromDB(teacherId){
         return "hola tqm";
     } finally {
         client.release();
+        calculateCalification(teacherId);
     }
 }
 

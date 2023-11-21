@@ -98,4 +98,5 @@ async function calculateCalification(teacher_id){
 module.exports = {
     getComments,
     createComment,
+    calculateCalification,
 }

@@ -170,7 +170,7 @@ const verifyEmail = async(req, res)=>{
                     } catch(error){
                         console.log(error);
                     }
-                    return res.status(200).json({message: "Correo confirmado"})
+                    return res.redirect('https://profesoft.onrender.com/files/login.html?msg=Correoconfirmado');
                 } else {
                     return res.status(403).json({message: "Los tokens no coinciden"})
                 }
