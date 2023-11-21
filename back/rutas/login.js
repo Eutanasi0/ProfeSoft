@@ -5,6 +5,9 @@ const router = Router();
 const { verifyLogin } = require("../controladores/logincontroller");
 const { createAccount, confirmEmail, verifyEmail } = require("../controladores/email");
 //Login
+router.get("/", async (req, res) =>{
+    res.redirect('https://profesoft.onrender.com/files/main.html');
+})
 router.post("/login", verifyLogin);
 router.post("/register",createAccount ,confirmEmail);
 router.get("/verify", verifyEmail);
