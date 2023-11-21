@@ -87,7 +87,7 @@ const confirmEmail = async(req, res)=>{
         client.release();
     }
 
-    let url = process.env.baseUrl + "verify?id=" + token_mail_verification + "&username=" + usuario;
+    let url = process.env.baseUrlHost + "verify?id=" + token_mail_verification + "&username=" + usuario;
 
     let configuration = {
         service: 'gmail',
