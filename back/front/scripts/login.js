@@ -24,6 +24,9 @@ login_button.addEventListener('click', function(){
     .then(data => {
         if(data.username === usuario.value){
             location.href =`/files/navigate.html?user=${data['response']['id'].name}`;
+        } else{
+            console.log(data)
+            window.confirm(`${data.msg}`);
         }
     })
     .catch(error => console.error(error));
