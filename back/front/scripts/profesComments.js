@@ -2,9 +2,14 @@ const urlParams = new URLSearchParams(window.location.search);
 const teacherId = urlParams.get('id');
 const username = urlParams.get('user');
 const commentId = teacherId;
+
 const perfilContainer = document.getElementById('perfil');
-const comentariosContainer = document.getElementById('comentariosContainer');
+const comentarios = document.getElementById('comentarios');
 const comentarButton = document.getElementById('comentar');
+const container = document.getElementById('container');
+
+const inputComentario = document.getElementById('nuevoComentario');
+const inputCalificacion = document.getElementById('calificacion');
 
 const mainlink = document.getElementById('main');
 const navigatelink = document.getElementById('navigate');
@@ -68,14 +73,40 @@ fetch(`/getComments?id=${commentId}`, {
 })
 .then(data =>{
     console.log(data);
+    console.log(data.length);
+    let commentsHTML = '<h2>Comentarios</h2>';
+    for(let i = 0; i< data.length; i++){
+        commentsHTML += `
+            <div class="comentario" style="word-wrap: break-word;">
+                <div style="display: flex; justify-content: space-between;">
+                    <p style="font-weight: bold; padding: 10px;">${data[i].username}</p>
+                    <p style="font-weight: bold; padding: 10px;">Calificación: ${data[i].grade}</p>
+                </div>
+                <div style="word-wrap: break-word; border: 1px solid gray; padding: 10px; margin-bottom: 10px; border-radius: 15px;">
+                    <p>${data[i].text}</p>
+                </div>
+            </div>
+        `;
+    }
+    comentarios.innerHTML = commentsHTML;
 })
 
 comentarButton.addEventListener('click', function(){
+    if(!inputComentario.value || !inputCalificacion.value){
+        console.log("Comenta algo");
+        return;
+    }
     fetch(`/createComment`, {
-        method: 'GET',
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-        }
+        },
+        body: JSON.stringify({
+            teacher_id: teacherId,
+            name: username,
+            text: inputComentario.value,
+            calificacion: inputCalificacion.value,
+        })
     })
     .then(response =>{
         if (!response.ok) {

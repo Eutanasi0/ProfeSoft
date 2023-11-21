@@ -11,7 +11,6 @@ const pool = new Pool({
 
 const getTeacher = async(req, res) =>{
     teacherId = req.query.id;
-    console.log(teacherId);
     try {
         const teachers = await getTeachersFromDB(teacherId);
         return res.status(200).json({teachers});
@@ -31,7 +30,6 @@ async function getTeachersFromDB(teacherId){
 
         const teacher = teacherQuery.rows[0];
         const courseId = courseIdQuery.rows[0]["cursos_id"];
-        console.log(teacher, courseId)
 
         const query_find_course_by_id = {
             text: 'SELECT * FROM public."courses" WHERE id = $1',

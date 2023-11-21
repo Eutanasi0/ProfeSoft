@@ -7,6 +7,6 @@ const { auth } = require('../controladores/logincontroller');
 
 // Rutas
 router.get("/getComments", getComments);
-router.get("/createComment", auth,createComment);
+router.post("/createComment", auth, createComment);
 
 module.exports = router;

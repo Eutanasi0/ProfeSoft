@@ -46,7 +46,7 @@ const pgPool = new pg.Pool({
       }),
       secret: process.env.jwt_secret_mail,
       resave: false,
-      cookie: { maxAge: 10*60*1000 },
+      cookie: { maxAge: 60*60*1000 },
       saveUninitialized: false,
       secure: true,
   }));
