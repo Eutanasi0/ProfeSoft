@@ -1,6 +1,6 @@
 let usuario = document.getElementById('user');
 let contra = document.getElementById('password');
-let login_button = document.getElementById('loginbutton')
+let login_button = document.getElementById('loginbutton');
 
 login_button.addEventListener('click', function(){
     event.preventDefault();

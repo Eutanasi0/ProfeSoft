@@ -23,6 +23,7 @@ button.addEventListener('click', function(){
     })
     .then(data => {
         console.log(data);
+        location.href =`/files/login.html`;
     })
     .catch(error => console.error(error));
 })
