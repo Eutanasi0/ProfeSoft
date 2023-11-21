@@ -14,7 +14,3 @@ if (username == "null" || username == null) {
     mainlink.href = `../files/main.html?user=${username}`;
     navigatelink.href = `../files/navigate.html?user=${username}`;
 }
-
-logout.addEventListener('click', function(){
-    console.log('hola');
-});

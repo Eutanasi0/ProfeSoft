@@ -20,14 +20,18 @@ const createAccount = async(req, res, next) =>{
     let salt = '';
 
     if(confirmDomain(email)){
-        await usingTheDB(pass, hashed_pass, salt, usuario, email, password);
-        next();
+        if(await usingTheDB(pass, hashed_pass, salt, usuario, email, password)){
+            res.status(200).json({message: "Se ha mandado el correo"});
+            next();
+        } else{
+            res.status(200).json({msg: "Ese correo o nombre ya existe"});
+        }
     } else {
         res.status(200).json({message: "Ese no es un correo institucional..."})
     }
 }
 
-async function usingTheDB(pass, hashed_pass, salt, usuario, email, password){
+async function usingTheDB(pass, hashed_pass, salt, usuario, email){
     const client = await pool.connect();
     try {
         salt = await bcrypt.genSalt(10);
@@ -37,9 +41,10 @@ async function usingTheDB(pass, hashed_pass, salt, usuario, email, password){
             values: [email, usuario],
         };
         const flag = await client.query(query_find_users_by_name);
+        console.log(flag.rowCount);
         if(flag.rowCount > 0){
             console.log("El nombre de usuario o el correo ya está registrado");
-            res.status(400).json({message: "El nombre de usuario o el email ya están registrados"});
+            return null;
         } else{
             const query_user = {
                 text: 'INSERT INTO public."users"(name, email, hashed_pass, salt) VALUES($1, $2, $3, $4)',
