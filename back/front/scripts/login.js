@@ -23,7 +23,7 @@ login_button.addEventListener('click', function(){
     })
     .then(data => {
         if(data.username === usuario.value){
-            location.href =`http://localhost:3000/files/navigate.html?user=${data['response']['id'].name}`;
+            location.href =`/files/navigate.html?user=${data['response']['id'].name}`;
         }
     })
     .catch(error => console.error(error));

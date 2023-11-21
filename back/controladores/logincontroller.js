@@ -95,7 +95,7 @@ async function verifyactivation(username) {
 
 const auth = async(req, res, next)=>{
     if(!req.session.isAuth){
-        res.status(200).json({msg:"No estás logeado"})
+        res.status(500).json({msg:"No estás logeado"})
     } else{
         next();
     }
