@@ -98,17 +98,6 @@ comentarButton.addEventListener('click', function(){
         window.confirm(`Comenta algo...`)
         return;
     }
-    comentarios.innerHTML += `
-        <div class="comentario" style="word-wrap: break-word;">
-            <div style="display: flex; justify-content: space-between;">
-                <p style="font-weight: bold; padding: 10px;">${username}</p>
-                <p style="font-weight: bold; padding: 10px;">Calificación: ${inputCalificacion.value}</p>
-            </div>
-            <div style="word-wrap: break-word; border: 1px solid gray; padding: 10px; margin-bottom: 10px; border-radius: 15px;">
-                <p>${inputComentario.value}</p>
-            </div>
-        </div>
-    `;
     fetch(`/createComment`, {
         method: 'POST',
         headers: {
@@ -129,6 +118,17 @@ comentarButton.addEventListener('click', function(){
     })
     .then(data =>{
         console.log(data);
+        comentarios.innerHTML += `
+            <div class="comentario" style="word-wrap: break-word;">
+                <div style="display: flex; justify-content: space-between;">
+                    <p style="font-weight: bold; padding: 10px;">${username}</p>
+                    <p style="font-weight: bold; padding: 10px;">Calificación: ${inputCalificacion.value}</p>
+                </div>
+                <div style="word-wrap: break-word; border: 1px solid gray; padding: 10px; margin-bottom: 10px; border-radius: 15px;">
+                    <p>${inputComentario.value}</p>
+                </div>
+            </div>
+        `;
         inputComentario.value = null;
         inputCalificacion.value = null;
     })

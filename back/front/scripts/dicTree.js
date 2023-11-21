@@ -68,11 +68,3 @@ async function buscarProfe() {
         console.error("Error during search:", error);
     }
 }
-
-// Aquí hace la petición cuando presiona buscar
-
-const button = document.getElementById('buscar');
-
-button.addEventListener('click', function(){
-
-});
