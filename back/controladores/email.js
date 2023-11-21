@@ -97,7 +97,7 @@ const confirmEmail = async(req, res)=>{
         theme: 'default',
         product: {
             name: "FISIBOT",
-            link: 'http://localhost:3000/files/main.html'
+            link: `${process.env.baseUrl}files/main.html`
         }
     })
 

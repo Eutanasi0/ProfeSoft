@@ -76,7 +76,6 @@ async function getUserFromDatabase(username, password) {
     }
 }
 
-
 async function verifyactivation(username) {
     const client = await pool.connect();
     try {
@@ -96,7 +95,7 @@ async function verifyactivation(username) {
 
 const auth = async(req, res, next)=>{
     if(!req.session.isAuth){
-        res.status(200).json({msg:"Necesitas logearte"})
+        res.status(200).json({msg:"No estás logeado"})
     } else{
         next();
     }
