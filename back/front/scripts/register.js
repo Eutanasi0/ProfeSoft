@@ -2,6 +2,7 @@ let button = document.getElementById('registerbutton');
 let user = document.getElementById('user');
 let email = document.getElementById('email');
 let password = document.getElementById('password');
+let div = document.getElementById('form-div');
 
 button.addEventListener('click', function(){
     fetch("/register", {
@@ -23,7 +24,8 @@ button.addEventListener('click', function(){
     })
     .then(data => {
         console.log(data);
-        location.href =`/files/login.html`;
+        window.confirm(`${data.message}`)
+        // location.href =`/files/login.html`;
     })
     .catch(error => console.error(error));
 })

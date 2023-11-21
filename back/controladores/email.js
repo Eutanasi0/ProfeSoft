@@ -24,7 +24,7 @@ const createAccount = async(req, res, next) =>{
             res.status(200).json({message: "Se ha mandado el correo"});
             next();
         } else{
-            res.status(200).json({msg: "Ese correo o nombre ya existe"});
+            res.status(200).json({message: "Ese correo o nombre ya existe"});
         }
     } else {
         res.status(200).json({message: "Ese no es un correo institucional..."})
@@ -51,6 +51,7 @@ async function usingTheDB(pass, hashed_pass, salt, usuario, email){
                 values: [usuario, email, hashed_pass, salt],
             }
             await client.query(query_user);
+            return 1;
         }
     } catch (error) {
         console.error('Error:', error);
@@ -131,12 +132,9 @@ const confirmEmail = async(req, res)=>{
     }
 
     tranporter.sendMail(message).then(()=>{
-        return res.status(201).json({
-            msg: "Se logró enviar el correo"
-        })
+        console.log('Se mandó el correo');
     }).catch(error => {
         console.log(error);
-        return res.status(500).json({error})
     })
 }
 
