@@ -18,10 +18,11 @@
     z-index: 100;
 }
 
-.logoPS {
+.logoPS{
     font-size: 32px;
     color: white;
     font-family: 'Pacifico', cursive;
+    font-family: 'Roboto', sans-serif;
     text-decoration: none;
     font-weight: 700;
 }
