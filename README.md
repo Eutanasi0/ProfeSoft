@@ -127,6 +127,9 @@ async function usingTheDB(pass, hashed_pass, salt, usuario, email){
     }
 };
 ```
+
+Petición tipo `POST` que involucra las dos funciones de arriba, primero se confirma si el email es institucional para luego crear el usuario.
+
 ```
 const createAccount = async(req, res, next) =>{
     const {usuario, email, password} = req.body;
