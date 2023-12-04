@@ -1,3 +1,13 @@
+//scroll reveal
+const sr = ScrollReveal({
+    distance:'65px',
+    duration:2600,
+    delay:450,
+    reset:false,
+});
+
+sr.reveal('.perfilprofe',{delay:450,origin:'left'});
+
 const urlParams = new URLSearchParams(window.location.search);
 const teacherId = urlParams.get('id');
 const username = urlParams.get('user');

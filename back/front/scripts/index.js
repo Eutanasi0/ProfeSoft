@@ -11,3 +11,4 @@ sr.reveal('.inicio-img',{delay:450, origin:'left'});
 sr.reveal('.form-box',{delay:450, origin:'top'});
 sr.reveal('.logoprofesoft',{delay:450, origin:'top'});
 sr.reveal('.presenta-text',{delay:450,origin:'top'});
+sr.reveal('.perfilprofe',{delay:450,origin:'left'});
