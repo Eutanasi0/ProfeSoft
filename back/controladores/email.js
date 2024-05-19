@@ -6,7 +6,7 @@ const { Pool } = require("pg");
 require('dotenv').config();
 
 const pool = new Pool({
-    user: 'postgres',
+    user: 'professoft',
     host: process.env.HOST,
     database: 'professoft', // weben
     password: process.env.PASSWORD,
