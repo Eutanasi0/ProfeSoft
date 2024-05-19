@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 require('dotenv').config();
 
 const client = new Client({
-    user: 'postgres',
+    user: 'professoft',
     host: process.env.HOST,
     database: 'professoft', // weben
     password: process.env.PASSWORD,
