@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 
 // Cookies
 const pgPool = new pg.Pool({
-    user: 'postgres',
+    user: 'professoft',
     host: process.env.HOST,
     database: 'professoft',
     password: process.env.PASSWORD,
