@@ -3,9 +3,9 @@ const { Pool } = require("pg");
 const { calculateCalification } = require('./commentscontroller');
 
 const pool = new Pool({
-    user: 'professoft',
+    user: 'postgres',
     host: process.env.HOST,
-    database: 'professoft',
+    database: 'profesoft',
     password: process.env.PASSWORD,
     port: 5432,
 })

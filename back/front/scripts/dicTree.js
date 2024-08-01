@@ -20,11 +20,18 @@ async function fetchData() {
     }
 }
 
+function getUsernameFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('user');
+}
+
 async function buscarProfe() {
     const input = document.getElementById('busqueda');
     const resultados = document.getElementById('resultados');
     const consulta = input.value.toLowerCase();
     resultados.innerHTML = '';
+
+    const username = getUsernameFromURL();
 
     try {
         if (!profesoresDB) {

@@ -6,9 +6,9 @@ const { Pool } = require("pg");
 require('dotenv').config();
 
 const pool = new Pool({
-    user: 'professoft',
+    user: 'postgres',
     host: process.env.HOST,
-    database: 'professoft', // weben
+    database: 'profesoft', // weben
     password: process.env.PASSWORD,
     port: 5432,
 })
@@ -170,7 +170,7 @@ const verifyEmail = async(req, res)=>{
                     } catch(error){
                         console.log(error);
                     }
-                    return res.redirect('https://profesoft.onrender.com/files/login.html?msg=Correoconfirmado');
+                    return res.redirect('/files/login.html?msg=Correoconfirmado');
                 } else {
                     return res.status(403).json({message: "Los tokens no coinciden"})
                 }
